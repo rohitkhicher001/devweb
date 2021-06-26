@@ -6,9 +6,11 @@ import ReactRouterSetup from "./router";
 import reportWebVitals from "./reportWebVitals";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import TodayDate from "./components/TodayDate";
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* <TodayDate /> */}
     <ReactRouterSetup />
   </React.StrictMode>,
   document.getElementById("root")

@@ -17,7 +17,7 @@ function ReactRouterSetup() {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/signup">
+        <Route path="/register">
           <Signup />
         </Route>
         <Route path="/history">

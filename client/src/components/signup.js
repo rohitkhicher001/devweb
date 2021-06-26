@@ -29,7 +29,7 @@ function Signup() {
     e.preventDefault();
 
     const { firstname, lastname, email, password, confirmpassword } = values;
-    const res = await fetch("./signup", {
+    const res = await fetch("/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,8 +45,10 @@ function Signup() {
     const data = await res.json();
     if (res.status === 422 || !data) {
       window.alert("invalid registration");
+      console.log("invalid registration");
     } else {
       window.alert("Registration successful");
+      console.log("registration successful");
       history.push("/login");
     }
   };
@@ -117,7 +119,7 @@ function Signup() {
               <Link
                 className="btn btn-primary w-100"
                 color="unique"
-                to="/"
+                to="/login"
                 onClick={PostData}
               >
                 Signup
