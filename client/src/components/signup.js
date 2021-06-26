@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 function Signup() {
+  const history = useHistory();
+
   const initialValues = {
     firstname: "",
     lastname: "",
@@ -12,6 +14,7 @@ function Signup() {
   const [values, setValues] = useState(initialValues);
 
   const handleInputChange = (e) => {
+    e.preventDefault();
     const { name, value } = e.target;
     setValues({
       ...values,
@@ -36,6 +39,13 @@ function Signup() {
         confirmpassword,
       }),
     });
+    const data = await res.json();
+    if (res.status === 422 || !data) {
+      window.alert("invalid registration");
+    } else {
+      window.alert("Registration successful");
+      history.push("/login");
+    }
   };
 
   return (
