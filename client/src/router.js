@@ -5,6 +5,7 @@ import Home from "./components/home";
 import Login from "./components/login";
 import Signup from "./components/signup";
 import Error from "./components/error";
+import History from "./components/history";
 
 function ReactRouterSetup() {
   return (
@@ -18,6 +19,9 @@ function ReactRouterSetup() {
         </Route>
         <Route path="/signup">
           <Signup />
+        </Route>
+        <Route path="/history">
+          <History />
         </Route>
         <Route path="*">
           <Error />

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 function Home() {
   const emailData = {
     to: "",
@@ -33,6 +34,7 @@ function Home() {
     <div className="home">
       <div>
         <h3>Home</h3>
+        <Link to="/history">History</Link>
       </div>
       <form onSubmit={handleSubmit}>
         <div>

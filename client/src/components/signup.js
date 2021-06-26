@@ -59,7 +59,6 @@ function Signup() {
             <p className="h2 text-center mb-4 ml-4">Sign up</p>
             <div className="m-3 w-100">
               <input
-                id="defaultFormRegisterFirstNameEx"
                 className="form-control text-center"
                 onChange={handleInputChange}
                 type="text"
