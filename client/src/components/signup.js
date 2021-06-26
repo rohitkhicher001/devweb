@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../css/signup.css";
+
 function Signup() {
   const history = useHistory();
 
@@ -49,68 +52,81 @@ function Signup() {
   };
 
   return (
-    <div className="signup">
-      <form method="POST">
-        <div>
-          <h3>Signup</h3>
-        </div>
-        <div>
-          <input
-            onChange={handleInputChange}
-            type="text"
-            placeholder="first name"
-            label="firstname"
-            value={values.firstname}
-            name="firstname"
-          />
-        </div>
-        <div>
-          <input
-            onChange={handleInputChange}
-            type="text"
-            placeholder="last name"
-            label="lastname"
-            value={values.lastname}
-            name="lastname"
-          />
-        </div>
+    <div className="container border rounded signup">
+      <div className="d-flex justify-content-center  p-4 px-2">
+        <div className="col-12">
+          <form method="POST">
+            <p className="h2 text-center mb-4 ml-4">Sign up</p>
+            <div className="m-3 w-100">
+              <input
+                id="defaultFormRegisterFirstNameEx"
+                className="form-control text-center"
+                onChange={handleInputChange}
+                type="text"
+                placeholder="first name"
+                label="firstname"
+                value={values.firstname}
+                name="firstname"
+              />
+            </div>
+            <div className="m-3 w-100">
+              <input
+                className="form-control text-center"
+                onChange={handleInputChange}
+                type="text"
+                placeholder="last name"
+                label="lastname"
+                value={values.lastname}
+                name="lastname"
+              />
+            </div>
 
-        <div>
-          <input
-            onChange={handleInputChange}
-            type="email"
-            placeholder="email"
-            label="email"
-            value={values.email}
-            name="email"
-          />
+            <div className="m-3 w-100">
+              <input
+                className="form-control text-center"
+                onChange={handleInputChange}
+                type="email"
+                placeholder="email"
+                label="email"
+                value={values.email}
+                name="email"
+              />
+            </div>
+            <div className="m-3 w-100">
+              <input
+                className="form-control text-center"
+                onChange={handleInputChange}
+                type="password"
+                placeholder="password"
+                label="password"
+                value={values.password}
+                name="password"
+              />
+            </div>
+            <div className="m-3 w-100">
+              <input
+                className="form-control text-center"
+                onChange={handleInputChange}
+                type="password"
+                placeholder="confirm password"
+                label="confirmpassword"
+                value={values.confirmpassword}
+                name="confirmpassword"
+              />
+            </div>
+            <div className="text-center mt-4 ml-5">
+              <Link
+                className="btn btn-primary w-100"
+                color="unique"
+                to="/"
+                onClick={PostData}
+              >
+                Signup
+              </Link>
+            </div>
+          </form>
         </div>
-        <div>
-          <input
-            onChange={handleInputChange}
-            type="password"
-            placeholder="password"
-            label="password"
-            value={values.password}
-            name="password"
-          />
-        </div>
-        <div>
-          <input
-            onChange={handleInputChange}
-            type="password"
-            placeholder="confirm password"
-            label="confirmpassword"
-            value={values.confirmpassword}
-            name="confirmpassword"
-          />
-        </div>
-        <div>
-          <Link to="/" onClick={PostData}>
-            Signup
-          </Link>
-        </div>
-      </form>
+      </div>
     </div>
   );
 }
