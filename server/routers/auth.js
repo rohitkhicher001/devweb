@@ -30,4 +30,27 @@ router.post("/register",async(req,res)=>{
        console.log(err);
     }
 })
+
+//Sign In
+router.post('/signin',async (req,res)=>{
+    try{
+        const {email,password}=req.body;
+        console.log(req.body);
+        if(!email||!password){
+            console.log(req.body);
+            return res.status(422).json({error:"PLEASE FILL THE DETAILS CORRECTLY"});
+        }
+        const userLogin=await User.findOne({email:email});
+        if(!userLogin){
+            res.json({message:"User Not Exist"});
+        }
+        else
+        {
+            res.status(200).json({message:"SignIn Successfully"});
+            console.log(userLogin);
+        }
+    }catch(err){
+        res.status(401).json({message:"INVALID CREDENTIAL"});
+    }
+})
 module.exports=router;
