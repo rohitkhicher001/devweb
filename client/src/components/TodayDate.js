@@ -1,62 +1,35 @@
 import React, { useState } from "react";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import moment from "moment";
+
 var FontAwesome = require("react-fontawesome");
 
 function TodayDate() {
-  let today = new Date();
-  const [date, setDate] = useState(
-    today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear()
-  );
+  const [dateState, setDateState] = useState(new Date());
+  const changeDate = (e) => {
+    setDateState(e);
+  };
+  var date1 = new Date();
+  const [seconds, setSeconds] = useState(0);
   const handleClick = () => {
-    console.log(values);
+    var date2 = dateState;
+    var seconds = Math.floor(Math.abs(date1 - date2) / 1000);
+    setSeconds(seconds);
+    console.log(seconds);
+    window.alert("your schedule has been saved");
   };
-  const initialValues = {
-    newdate: "",
-    newmonth: "",
-    newyear: "",
-  };
-
-  const [values, setValues] = useState(initialValues);
-
-  const handleInputChange = (e) => {
-    e.preventDefault();
-    const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  };
-
   return (
-    <div className="date">
-      <input
-        type="text"
-        placeholder="date"
-        value={values.newdate}
-        onChange={handleInputChange}
-        name="newdate"
-        label="newdate"
-      />
-      <input
-        type="text"
-        placeholder="month"
-        value={values.newmonth}
-        onChange={handleInputChange}
-        name="newmonth"
-        label="newmonth"
-      />
-      <input
-        type="text"
-        placeholder="year"
-        value={values.newyear}
-        onChange={handleInputChange}
-        name="newyear"
-        label="newyear"
-      />
-      <button onClick={() => handleClick()}>schedule</button>
-
+    <>
+      <Calendar value={dateState} onChange={changeDate} />
+      <p>
+        Current selected date is{" "}
+        <b>{moment(dateState).format("MMMM Do YYYY")}</b>
+      </p>
+      <button onClick={handleClick}>Save Schedule</button>
+      {seconds}
       <FontAwesome name="calendar" />
-      {date}
-    </div>
+    </>
   );
 }
 export default TodayDate;
