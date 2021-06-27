@@ -4,14 +4,23 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client":"npm run start --prefix client",
+    "dev":"concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "concurrently": "^6.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.12.15",
+<<<<<<< HEAD
     "nodemon": "^2.0.7"
+=======
+    "nodemailer": "^6.6.2"
+>>>>>>> 8fb31699a8c9239d9eb9f46a26136482ca4579dd
   }
 }
