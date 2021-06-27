@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/login.css";
 
 function Login() {
+  const history = useHistory();
   const loginData = {
     email: "",
     password: "",
@@ -18,6 +19,29 @@ function Login() {
       ...loginvalues,
       [name]: value,
     });
+  };
+
+  const loginHandle = async (e) => {
+    const { email, password } = loginvalues;
+    const res = await fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+    const data = await res.json();
+    if (res.status === 422 || !data) {
+      window.alert(data.error);
+      console.log("Invalid");
+    } else if (res.status === 500) {
+      console.log("Successfull");
+      history.push("/");
+    }
+    e.preventDefault();
   };
 
   return (
@@ -50,7 +74,12 @@ function Login() {
                 />
               </div>
               <div className="text-center mt-4 ml-5">
-                <Link className="btn btn-primary w-100" color="unique" to="/">
+                <Link
+                  className="btn btn-primary w-100"
+                  onClick={loginHandle}
+                  color="unique"
+                  to="/"
+                >
                   Login
                 </Link>
               </div>
